@@ -13,7 +13,7 @@ def detect_problems(data):
   else:
     print("Seems OK!")
 
-def plot_data(data):
+def plot_data(data,filename):
   fig=matplotlib.pyplot.figure(figsize=(10.0,3.0))
 
   axes1=fig.add_subplot(1,3,1)
@@ -30,8 +30,10 @@ def plot_data(data):
   axes3.plot(numpy.min(data,axis=0))
 
   fig.tight_layout()
-
-  matplotlib.pyplot.show()
+  
+  outFilename=filename[:-4]+".png"
+  matplotlib.pyplot.savefig(outFilename)
+  #matplotlib.pyplot.show()
 
 # Main program
 
@@ -43,5 +45,5 @@ for file in files:
 
   detect_problems(data)
 
-  plot_data(data)
+  plot_data(data,file)
 
