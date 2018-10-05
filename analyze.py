@@ -2,13 +2,7 @@ import numpy
 import matplotlib.pyplot
 import glob
 
-files=glob.glob("inflammation*.csv")
-
-for file in files:
-  print(file)
-  data=numpy.loadtxt(fname=file, 
-  delimiter=',')
-
+def detect_problems(data):
   max_inflammation_0=numpy.max(data,axis=0)[0]
   max_inflammation_20=numpy.max(data,axis=0)[20]
   if max_inflammation_0==0 and max_inflammation_20==20:
@@ -17,6 +11,15 @@ for file in files:
     print('Minima add up to zero!')
   else:
     print("Seems OK!")
+
+
+files=glob.glob("inflammation*.csv")
+
+for file in files:
+  print(file)
+  data=numpy.loadtxt(fname=file, delimiter=',')
+
+  detect_problems(data)
 
   fig=matplotlib.pyplot.figure(figsize=(10.0,3.0))
 
