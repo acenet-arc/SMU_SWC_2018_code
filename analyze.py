@@ -1,6 +1,7 @@
 import numpy
 import matplotlib.pyplot
 import glob
+import sys
 
 def detect_problems(data):
   max_inflammation_0=numpy.max(data,axis=0)[0]
@@ -34,7 +35,7 @@ def plot_data(data):
 
 # Main program
 
-files=glob.glob("inflammation*.csv")
+files=sys.argv[1:]
 
 for file in files:
   print(file)
