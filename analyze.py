@@ -12,15 +12,7 @@ def detect_problems(data):
   else:
     print("Seems OK!")
 
-
-files=glob.glob("inflammation*.csv")
-
-for file in files:
-  print(file)
-  data=numpy.loadtxt(fname=file, delimiter=',')
-
-  detect_problems(data)
-
+def plot_data(data):
   fig=matplotlib.pyplot.figure(figsize=(10.0,3.0))
 
   axes1=fig.add_subplot(1,3,1)
@@ -39,3 +31,16 @@ for file in files:
   fig.tight_layout()
 
   matplotlib.pyplot.show()
+
+# Main program
+
+files=glob.glob("inflammation*.csv")
+
+for file in files:
+  print(file)
+  data=numpy.loadtxt(fname=file, delimiter=',')
+
+  detect_problems(data)
+
+  plot_data(data)
+
